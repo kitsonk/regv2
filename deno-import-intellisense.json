@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "registries": [
+    {
+      "schema": "/:module([a-z0-9_]+)@:version?/:path",
+      "variables": [
+        {
+          "key": "module",
+          "details": "/api/details/mods/${module}",
+          "url": "/api/mods/${module}"
+        },
+        {
+          "key": "version",
+          "details": "/api/details/mods/${module}/v/${{version}}",
+          "url": "/api/mods/${module}/v/${{version}}"
+        },
+        {
+          "key": "path",
+          "details": "/api/details/mods/${module}/v/${{version}}/p/${path}",
+          "url": "/api/mods/${module}/v/${{version}}/p/${path}"
+        }
+      ]
+    }
+  ]
+}
