@@ -137,11 +137,15 @@ router.get("/api/mods/:module/v/:version/p/", async (ctx) => {
     paths[ctx.params.module] = {};
   }
   if (!paths[ctx.params.module][ctx.params.version]) {
-    const res = await (fetch(
-      `https://deno.land/_vsc1/modules/${ctx.params.module}/v/${
+    let url;
+    if (ctx.params.version === "latest") {
+      url = `https://deno.land/_vsc1/modules/${ctx.params.module}/v_latest`;
+    } else {
+      url = `https://deno.land/_vsc1/modules/${ctx.params.module}/v/${
         encodeURI(ctx.params.version)
-      }`,
-    ));
+      }`;
+    }
+    const res = await fetch(url);
     if (res.status === 200) {
       paths[ctx.params.module][ctx.params.version] = await res.json();
     } else {
@@ -163,11 +167,15 @@ router.get("/api/mods/:module/v/:version/p/:path*", async (ctx) => {
     paths[ctx.params.module] = {};
   }
   if (!paths[ctx.params.module][ctx.params.version]) {
-    const res = await (fetch(
-      `https://deno.land/_vsc1/modules/${ctx.params.module}/v/${
+    let url;
+    if (ctx.params.version === "latest") {
+      url = `https://deno.land/_vsc1/modules/${ctx.params.module}/v_latest`;
+    } else {
+      url = `https://deno.land/_vsc1/modules/${ctx.params.module}/v/${
         encodeURI(ctx.params.version)
-      }`,
-    ));
+      }`;
+    }
+    const res = await fetch(url);
     if (res.status === 200) {
       paths[ctx.params.module][ctx.params.version] = await res.json();
     } else {

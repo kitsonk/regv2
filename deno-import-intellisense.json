@@ -31,8 +31,8 @@
         },
         {
           "key": "path",
-          "details": "/api/details/mods/${module}/v/${{version}}/p/${path}",
-          "url": "/api/mods/${module}/v/${{version}}/p/${path}"
+          "details": "/api/details/mods/${module}/v/latest/p/${path}",
+          "url": "/api/mods/${module}/v/latest/p/${path}"
         }
       ]
     }
