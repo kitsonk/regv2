@@ -204,6 +204,12 @@ router.get("/api/details/mods/:module/v/:version/p/:path", (ctx) => {
   ctx.response.type = "json";
 });
 
+router.get("/x/:path*", (ctx) => {
+  ctx.response.redirect(
+    new URL(ctx.request.url.pathname, "https://deno.land/"),
+  );
+});
+
 const app = new Application();
 
 app.use(router.routes());
