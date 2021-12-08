@@ -58,7 +58,10 @@ router.get("/api/mods/:module", async (ctx) => {
 router.get("/api/details/mods/:module", (ctx) => {
   ctx.response.body = {
     kind: "markdown",
-    value: `some **${ctx.params.module}**`,
+    value: `## Package docs for ${ctx.params.module}
+
+Top level package documentation can be included here, in rich markdown text.
+`,
   };
   ctx.response.type = "json";
 });
@@ -127,7 +130,7 @@ router.get("/api/mods/:module/v/:version", async (ctx) => {
 router.get("/api/details/mods/:module/v/:version", (ctx) => {
   ctx.response.body = {
     kind: "markdown",
-    value: `- ${ctx.params.module}**\n- ${ctx.params.version}\n`,
+    value: `- **${ctx.params.module}**\n- _${ctx.params.version}_\n`,
   };
   ctx.response.type = "json";
 });
@@ -198,8 +201,15 @@ router.get("/api/mods/:module/v/:version/p/:path*", async (ctx) => {
 router.get("/api/details/mods/:module/v/:version/p/:path", (ctx) => {
   ctx.response.body = {
     kind: "markdown",
-    value:
-      `- ${ctx.params.module}**\n- ${ctx.params.version}\n- ${ctx.params.path}\n`,
+    value: `## Examples for ${ctx.params.module}
+
+Rich **documentation** and \`code\` examples even could be included.
+
+|Item|Desc|
+|--|--|
+|Version|${ctx.params.version}|
+|Module|${ctx.params.module}|
+`,
   };
   ctx.response.type = "json";
 });
