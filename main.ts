@@ -201,14 +201,15 @@ router.get("/api/mods/:module/v/:version/p/:path*", async (ctx) => {
 router.get("/api/details/mods/:module/v/:version/p/:path", (ctx) => {
   ctx.response.body = {
     kind: "markdown",
-    value: `## Examples for ${ctx.params.module}
+    value: `## Examples for ${ctx.params.path}
 
 Rich **documentation** and \`code\` examples even could be included.
 
 |Item|Desc|
 |--|--|
+|Package|${ctx.params.module}|
 |Version|${ctx.params.version}|
-|Module|${ctx.params.module}|
+|Module|${ctx.params.path}|
 `,
   };
   ctx.response.type = "json";
